@@ -5,6 +5,8 @@ from .serializers import UserSerializer
 from rest_framework.permissions import IsAuthenticated
 from .models import Vivienda
 from .serializers import ViviendaSerializer
+from django_filters.rest_framework import DjangoFilterBackend
+from .filters import ViviendaFilter
 
 
 class UserListCreateView(generics.ListCreateAPIView):
@@ -33,6 +35,8 @@ class ViviendaListCreateView(generics.ListCreateAPIView):
     queryset = Vivienda.objects.all()
     serializer_class = ViviendaSerializer
     permission_classes = [IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ViviendaFilter
 
     def perform_create(self, serializer):
         serializer.save(usuario=self.request.user)
