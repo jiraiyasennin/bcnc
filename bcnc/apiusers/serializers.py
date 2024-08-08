@@ -25,5 +25,5 @@ class UserSerializer(serializers.ModelSerializer):
 class ViviendaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vivienda
-        fields = ['id', 'usuario', 'direccion', 'ciudad', 'estado', 'codigo_postal', 'precio', 'descripcion']
+        fields = ['id', 'usuario', 'direccion', 'calle', 'ciudad', 'estado', 'pais', 'codigo_postal', 'precio', 'descripcion']
         read_only_fields = ['usuario']
